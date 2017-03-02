@@ -15,7 +15,12 @@ const URL = '';
 export class FileUploadComponent {
   @ViewChild('selectedFile') selectedFile: any;
 
-  public uploader: FileUploader = new FileUploader({ url: URL });
+  allowedMimeType = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+
+  public uploader: FileUploader = new FileUploader({
+    url: URL,
+    allowedMimeType: this.allowedMimeType
+  });
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
 
@@ -28,13 +33,11 @@ export class FileUploadComponent {
   }
 
   public removeFile(item) {
-    this.uploader.removeFromQueue(item);
     this.selectedFile.nativeElement.value = '';
     item.remove();
   }
 
   public cancelFile(item) {
-    this.uploader.removeFromQueue(item);
     this.selectedFile.nativeElement.value = '';
     item.cancel();
   }

@@ -25,7 +25,7 @@
     <br/>
     <br/>
     <!--<input type="file" ng2FileSelect [uploader]="uploader" multiple /><br/> Single-->
-    <input #selectedFile type="file" ng2FileSelect [uploader]="uploader" />
+    <input #selectedFile type="file" ng2FileSelect [uploader]="uploader" [accept]="allowedMimeType.toString()" />
   </div>
 
   <div class="col-md-9" style="margin-bottom: 40px">
