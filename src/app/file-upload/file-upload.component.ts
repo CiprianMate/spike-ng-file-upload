@@ -13,7 +13,8 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 export class FileUploadComponent {
 
-  public uploader: FileUploader = new FileUploader({ autoUpload: true, allowedFileType: ['xls', '.xls', 'xlsx', '.xlsx'], url: URL });
+  public uploader: FileUploader =
+  new FileUploader({ autoUpload: false, url: URL, maxFileSize: 16000000, allowedFileType: ['xls', '.xls', 'xlsx', '.xlsx'] });
 
 
   public hasBaseDropZoneOver: boolean = false;
@@ -27,13 +28,13 @@ export class FileUploadComponent {
     this.hasAnotherDropZoneOver = e;
   }
 
-  consoleout() {
+  // consoleout() {
 
-    console.log('this.uploader.options  ', this.uploader.options);
-    console.log('this.uploader._nextIndex  ', this.uploader._nextIndex);
-    console.log('this.uploader.queue  ', this.uploader.queue);
-    console.log('this.uploader._fileTypeFilter.name  ', this.uploader._fileTypeFilter.name);
-    console.log('this.uploader._fileSizeFilter  ', this.uploader._fileSizeFilter);
-  }
+  //   console.log('this.uploader.options  ', this.uploader.options);
+  //   console.log('this.uploader._nextIndex  ', this.uploader._nextIndex);
+  //   console.log('this.uploader.queue  ', this.uploader.queue);
+  //   console.log('this.uploader._fileTypeFilter.name  ', this.uploader._fileTypeFilter.name);
+  //   console.log('this.uploader._fileSizeFilter  ', this.uploader._fileSizeFilter);
+  // }
 
 }
