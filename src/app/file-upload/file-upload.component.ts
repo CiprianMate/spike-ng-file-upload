@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { NgClass, NgStyle } from '@angular/common';
 
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+const URL = '';
 
 @Component({
   selector: 'app-file-upload',
@@ -12,6 +13,8 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 })
 
 export class FileUploadComponent {
+  @ViewChild('selectedFile') selectedFile: any;
+
   public uploader: FileUploader = new FileUploader({ url: URL });
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
@@ -22,5 +25,24 @@ export class FileUploadComponent {
 
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
+  }
+
+  public removeFile(item) {
+    this.uploader.removeFromQueue(item);
+    this.selectedFile.nativeElement.value = '';
+    item.remove();
+  }
+
+  public cancelFile(item) {
+    this.uploader.removeFromQueue(item);
+    this.selectedFile.nativeElement.value = '';
+    item.cancel();
+  }
+
+  public uploadFile(item) {
+    var me = this;
+    setTimeout(function () {
+      me.cancelFile(item);
+    }, 3000);
   }
 }
