@@ -15,14 +15,17 @@ const URL = '';
 export class FileUploadComponent {
   @ViewChild('selectedFile') selectedFile: any;
 
-  allowedMimeType = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+  allowedMimeType = [
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.ms-excel'
+  ];
 
   public uploader: FileUploader = new FileUploader({
     url: URL,
     allowedMimeType: this.allowedMimeType
   });
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
+  public hasBaseDropZoneOver = false;
+  public hasAnotherDropZoneOver = false;
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -43,7 +46,8 @@ export class FileUploadComponent {
   }
 
   public uploadFile(item) {
-    var me = this;
+    let me = this;
+    // test upload cancelation after 3 seconds
     setTimeout(function () {
       me.cancelFile(item);
     }, 3000);
