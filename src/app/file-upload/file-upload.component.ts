@@ -12,7 +12,10 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 })
 
 export class FileUploadComponent {
-  public uploader: FileUploader = new FileUploader({ url: URL });
+
+  public uploader: FileUploader = new FileUploader({ autoUpload: true, allowedFileType: ['xls', '.xls', 'xlsx', '.xlsx'], url: URL });
+
+
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
 
@@ -23,4 +26,14 @@ export class FileUploadComponent {
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
+
+  consoleout() {
+
+    console.log('this.uploader.options  ', this.uploader.options);
+    console.log('this.uploader._nextIndex  ', this.uploader._nextIndex);
+    console.log('this.uploader.queue  ', this.uploader.queue);
+    console.log('this.uploader._fileTypeFilter.name  ', this.uploader._fileTypeFilter.name);
+    console.log('this.uploader._fileSizeFilter  ', this.uploader._fileSizeFilter);
+  }
+
 }
