@@ -14,8 +14,8 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 export class FileUploadComponent {
 
   public uploader: FileUploader =
-  new FileUploader({ autoUpload: false, url: URL, maxFileSize: 16000000, allowedFileType: ['xls', 'xlsx'] });
-
+  new FileUploader({ autoUpload: false, url: URL, maxFileSize: 32000000, allowedFileType: ['xls', 'xlsx'] });
+  // maxFileSize: 16000000 16 MB
 
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
